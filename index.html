@@ -3,119 +3,410 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>车丹大学 - ChetanUniversity”</title>
+    <title>Sebastien的博客</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body {
-            font-family: 'Comic Sans MS', Arial, sans-serif;
-            background-color: #f0f0f0;
-            color: #333;
-            text-align: center;
+        * {
             margin: 0;
-            padding: 20px;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        header {
-            background-color: #ff4d4d;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.3);
+        
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
         }
-        header h1 {
-            font-size: 3em;
-            color: white;
-            text-shadow: 2px 2px #000;
-        }
-        nav {
-            margin: 20px 0;
-        }
-        nav a {
-            margin: 0 15px;
-            text-decoration: none;
-            color: #ff4d4d;
-            font-weight: bold;
-        }
-        nav a:hover {
-            color: #ffd700;
-        }
-        .content {
-            max-width: 800px;
+        
+        .container {
+            max-width: 1200px;
             margin: 0 auto;
-            background-color: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+            padding: 0 20px;
         }
-        .meme {
-            font-style: italic;
-            color: #666;
+        
+        /* 头部样式 */
+        header {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
         }
-        .course-list li {
-            list-style-type: none;
-            margin: 10px 0;
-            font-size: 1.2em;
+        
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.1);
         }
-        footer {
-            margin-top: 20px;
-            font-size: 0.9em;
-            color: #888;
+        
+        .header-content {
+            position: relative;
+            z-index: 1;
         }
-        img {
-            max-width: 200px;
+        
+        .profile-img {
+            width: 150px;
+            height: 150px;
             border-radius: 50%;
-            margin: 10px;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            margin: 0 auto 20px;
+            background-color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+            color: #6a11cb;
+        }
+        
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .tagline {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: transform 0.3s;
+        }
+        
+        .social-links a:hover {
+            transform: translateY(-5px);
+        }
+        
+        /* 导航栏样式 */
+        nav {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #6a11cb;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #6a11cb;
+        }
+        
+        /* 主要内容区域 */
+        main {
+            padding: 60px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2rem;
+            color: #333;
+        }
+        
+        /* 博客文章网格 */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        
+        .blog-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .blog-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .card-img {
+            height: 200px;
+            background-color: #6a11cb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+        
+        .card-content {
+            padding: 20px;
+        }
+        
+        .card-title {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        .card-excerpt {
+            color: #666;
+            margin-bottom: 15px;
+        }
+        
+        .card-meta {
+            display: flex;
+            justify-content: space-between;
+            color: #888;
+            font-size: 0.9rem;
+        }
+        
+        /* 关于部分 */
+        .about-section {
+            background: white;
+            padding: 60px 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 60px;
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-img {
+            flex: 0 0 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 4rem;
+        }
+        
+        /* 页脚样式 */
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: #6a11cb;
+        }
+        
+        .copyright {
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .about-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .nav-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .tagline {
+                font-size: 1.2rem;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- 头部区域 -->
     <header>
-        <h1>欢迎来到车丹大学</h1>
-        <p>一个收录各种中文波兰球圈贵物的虚拟互联网学校</p>
+        <div class="container header-content">
+            <div class="profile-img">
+                <i class="fas fa-user"></i>
+            </div>
+            <h1>Sebastien</h1>
+            <p class="tagline">思想者 · 创作者 · 探索者</p>
+            <p>欢迎来到我的个人博客，这里分享我的思考、经验和发现</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
     </header>
 
+    <!-- 导航栏 -->
     <nav>
-        <a href="#home">首页</a>
-        <a href="#about">关于我们</a>
-        <a href="#people">名人</a>
-        <a href="#admission">招生</a>
-        <a href="#contact">联系我们</a>
+        <div class="container nav-container">
+            <div class="logo">Sebastien's Blog</div>
+            <ul class="nav-links">
+                <li><a href="#">首页</a></li>
+                <li><a href="#">文章</a></li>
+                <li><a href="#">项目</a></li>
+                <li><a href="#">关于我</a></li>
+                <li><a href="#">联系</a></li>
+            </ul>
+        </div>
     </nav>
 
-    <div class="content" id="home">
-        <h2>欢迎来到车丹大学！</h2>
-        <p>这里是中文波兰球圈的贵物刷怪笼，专门收录那些在波兰球圈里闹出笑话的BYDer们，欢迎您的投稿</p>
-    </div>
+    <!-- 主要内容 -->
+    <main class="container">
+        <!-- 最新文章部分 -->
+        <section>
+            <h2 class="section-title">最新文章</h2>
+            <div class="blog-grid">
+                <!-- 文章卡片1 -->
+                <article class="blog-card">
+                    <div class="card-img">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">现代Web开发趋势分析</h3>
+                        <p class="card-excerpt">探索2023年Web开发的最新趋势，从框架选择到性能优化，分享我的见解和实践经验。</p>
+                        <div class="card-meta">
+                            <span>2023年10月15日</span>
+                            <span>8分钟阅读</span>
+                        </div>
+                    </div>
+                </article>
+                
+                <!-- 文章卡片2 -->
+                <article class="blog-card">
+                    <div class="card-img">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">设计思维在产品开发中的应用</h3>
+                        <p class="card-excerpt">如何将设计思维融入产品开发流程，创造更具用户价值的产品解决方案。</p>
+                        <div class="card-meta">
+                            <span>2023年10月8日</span>
+                            <span>6分钟阅读</span>
+                        </div>
+                    </div>
+                </article>
+                
+                <!-- 文章卡片3 -->
+                <article class="blog-card">
+                    <div class="card-img">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">个人效率提升的10个技巧</h3>
+                        <p class="card-excerpt">分享我多年来积累的个人效率提升方法，帮助你在工作和生活中取得更好的成果。</p>
+                        <div class="card-meta">
+                            <span>2023年10月1日</span>
+                            <span>10分钟阅读</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
 
-    <div class="content" id="about">
-        <h2>关于车丹大学</h2>
-        <p>车丹大学（Chetan University），由老方成立于2023年5月3日，我们致力于收录更多的中文波兰球圈教授。</p>
-        <p>在画世界创办，目前主要在画世界和QQ活跃，有X分部</p>
-    </div>
+        <!-- 关于我部分 -->
+        <section class="about-section">
+            <h2 class="section-title">关于我</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>你好，我是Sebastien！我是一名充满热情的技术爱好者和内容创作者。</p>
+                    <p>在我的职业生涯中，我一直在探索技术与创意的交汇点。我热衷于学习新事物，并将我的知识和经验通过这个博客与大家分享。</p>
+                    <p>我的兴趣广泛，包括Web开发、用户体验设计、数字营销和个人成长等领域。我相信持续学习和分享是个人成长的关键。</p>
+                    <p>在这个博客中，你会找到关于技术、设计、生产力以及生活思考的各种内容。希望我的分享能为你带来启发和价值！</p>
+                </div>
+                <div class="about-img">
+                    <i class="fas fa-user-tie"></i>
+                </div>
+            </div>
+        </section>
+    </main>
 
-    <div class="content" id="people">
-        <h2>知名校友/教授/h2>
-        <ul class="course-list">
-            <li>老方(@LaoFang_Object)：车丹大学创始人，伟大无需多言</li>
-            <li>浩浩：火烧寅卯，开盒失误，车丹大学元老级人物</li>
-            <li>星之加勒比：圈拳权学代表人物</li>
-            <li>：被群友喷了怎么办？在线教你花式自救！</li>
-            <li>《波兰球画风进阶》：从手残到能画出“愤怒的波兰球”！</li>
-        </ul>
-    </div>
-
-    <div class="content" id="admission">
-        <h2>招生简章</h2>
-        <p>投稿要求：爆过逆天言论，干过逆天事，吵架有道德问题...</p>
-        <p>申请方式：在画世界 “车丹大学” 画题使用官方模板投稿，或找到相关人员投稿</p>
-    </div>
-
-    <div class="content" id="contact">
-        <h2>联系我们</h2>
-        <p> 邮箱：gitruan9@gmail.com</p>
-        <p> X：@Chetanuniversty</p>
-    </div>
-
+    <!-- 页脚 -->
     <footer>
-        <p>&copy; 2025 车丹大学 | 版权所有</p>
-        <p>Powered by SHicko544</p>
+        <div class="container footer-content">
+            <div class="footer-links">
+                <a href="#">首页</a>
+                <a href="#">文章</a>
+                <a href="#">项目</a>
+                <a href="#">关于我</a>
+                <a href="#">联系</a>
+            </div>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+            <p class="copyright">© 2023 Sebastien的博客. 保留所有权利.</p>
+        </div>
     </footer>
 </body>
 </html>
