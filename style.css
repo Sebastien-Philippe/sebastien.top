@@ -1,0 +1,26 @@
+/* 基础算法页面专用的样式 */
+.algorithm-list {
+    display: flex; /* 启用 Flexbox 布局 */
+    justify-content: space-around; /* 均匀分布 */
+    margin-top: 15px;
+}
+
+.algorithm-list ul {
+    list-style: none; /* 移除默认的项目符号 */
+    padding: 0;
+    margin: 0 20px;
+    flex: 1; /* 占据相等空间 */
+}
+
+.algorithm-list li {
+    background-color: #f7f9fc;
+    border-left: 4px solid #4ade80; /* 左侧绿色标记 */
+    padding: 10px;
+    margin-bottom: 8px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.algorithm-list li:hover {
+    background-color: #e6eaf0;
+}
