@@ -5,6 +5,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>基础算法 - 东华初级中学 OI Wiki</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked@12.1.2/lib/marked.umd.min.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const markdownContainers = document.querySelectorAll('.markdown-content');
+        
+        markdownContainers.forEach(container => {
+            // 获取容器内的原始 Markdown 文本
+            // 注意：使用 textContent 或 innerHTML 获取内容时，需要注意缩进和空格问题
+            let markdownText = container.textContent;
+
+            // 1. 清理内容：移除行首多余的空格/缩进，防止影响 Markdown 结构
+            // 找到所有行中最小的公共缩进（如果存在）
+            const lines = markdownText.split('\n');
+            let minIndent = Infinity;
+            
+            for (const line of lines) {
+                if (line.trim().length > 0) {
+                    const match = line.match(/^(\s*)/);
+                    if (match) {
+                        minIndent = Math.min(minIndent, match[0].length);
+                    }
+                }
+            }
+
+            // 移除公共缩进
+            if (minIndent !== Infinity && minIndent > 0) {
+                markdownText = lines.map(line => 
+                    line.startsWith(' '.repeat(minIndent)) ? line.substring(minIndent) : line
+                ).join('\n');
+            }
+
+
+            // 2. 核心渲染
+            // 使用 marked.js 将 Markdown 文本转换为 HTML
+            // marked.parse() 是异步的，但为了简化部署，这里仍按同步方式处理
+            // (在旧版本marked中是同步的，新版本推荐marked.parse())
+            container.innerHTML = marked.parse(markdownText);
+        });
+
+        console.log('Markdown rendering complete.');
+    });
+    </script>
 </head>
 <body>
 
